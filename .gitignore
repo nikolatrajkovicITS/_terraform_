@@ -2,5 +2,7 @@
 .tar.gz
 
 awscli-bundle
-/awscli-bundle
 awscli-bundle.zip
+
+.terraform
+terraform-provider-aws_v4
