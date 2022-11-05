@@ -20,3 +20,22 @@ provider "registry.terraform.io/hashicorp/aws" {
     "zh:f2e400b88c8de170bb5027922226da1e9a6614c03f2a6756c15c3b930c2f460c",
   ]
 }
+
+provider "registry.terraform.io/redislabs/rediscloud" {
+  version     = "0.2.1"
+  constraints = "0.2.1"
+  hashes = [
+    "h1:K7j/8RjvCCcixmr35WjY2m5Nzu+Dc50h9PR/nasyBdA=",
+    "zh:118dfadb743100914c88ba0f78e025ce544172026a014f75c67d67e1b584feaa",
+    "zh:1ff2a96ff846822eab8453621bbf605a7c3652e4b1755a0673fba656e9e37ed3",
+    "zh:3340aa8b48a228291737c76f545e21ca4fa2922c41e57cac84e3d688a1b28ac3",
+    "zh:47867494b3dcaf8bc8e05c83da4ea639ded19af70283e461c369597a4e5f0a3e",
+    "zh:676ce56bd359f6312129403045e2c02708c1daedf192ebbdce9e0e11ec5b19fc",
+    "zh:80a3807b3a326f8ea629ce2e82f42bc501d9ef7e345e9c4e5d67719f520eb8ff",
+    "zh:932ce6414bca121d60f73b9de594c92da8f1a286d12d1c48f30c3b24da16bb1b",
+    "zh:a5dd3f512cc9b13aad1fd416ad73011efe65eed612a27d18d5771ecf59bc84f2",
+    "zh:b0427313e9859d4c7a99b2bca45b571784eda14ec4511ecfb4e829bbb37f769d",
+    "zh:b8bc0c07f3636283254c14c7a8040d8233f3e4d483860b99a4df4c49cac80aee",
+    "zh:bc95461b812d23104d08d903afcece0b4fd568f047819ba9f91341a1b64c76e2",
+  ]
+}
