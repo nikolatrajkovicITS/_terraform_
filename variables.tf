@@ -3,6 +3,16 @@ variable "host_os" {
   default = "linux"
 }
 
+variable "enivorment" {
+  type    = string
+  default = "dev"
+}
+
+variable "project" {
+  type    = string
+  default = ""
+}
+
 variable "rediscloud_creds" {
   type    = list(any)
   default = ["", ""]

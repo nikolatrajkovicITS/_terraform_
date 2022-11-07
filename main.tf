@@ -4,7 +4,7 @@ resource "aws_vpc" "main" {
   enable_dns_support   = true
 
   tags = {
-    Name = "dev"
+    Name = var.enivorment
   }
 }
 
@@ -23,7 +23,7 @@ resource "aws_subnet" "public_subnet" {
   availability_zone       = "us-east-1b"
 
   tags = {
-    Name = "dev-public-subnet"
+    Name = "${var.enivorment}-public-subnet"
   }
 }
 
@@ -51,7 +51,7 @@ resource "aws_internet_gateway" "internet_gateway" {
   vpc_id = aws_vpc.main.id
 
   tags = {
-    Name = "dev-igw"
+    Name = "${var.enivorment}-igw"
   }
 }
 
@@ -59,7 +59,7 @@ resource "aws_route_table" "public_rt" {
   vpc_id = aws_vpc.main.id
 
   tags = {
-    Name = "dev_public_rt"
+    Name = "${var.enivorment}_public_rt"
   }
 }
 
@@ -78,8 +78,8 @@ resource "aws_route_table_association" "public_association_table" {
 
 # we don't need a tag here cus sg has name attribute
 resource "aws_security_group" "security_group" {
-  name        = "dev_security_group"
-  description = "dev security group"
+  name        = "${var.enivorment}_security_group"
+  description = "${var.enivorment} security group"
   vpc_id      = aws_vpc.main.id
 
   ingress {
@@ -122,7 +122,7 @@ resource "aws_key_pair" "deployer" {
   public_key = file("~/.ssh/terrafrom-tut-key.pub")
 }
 
-resource "aws_instance" "dev_node" {
+resource "aws_instance" "node" {
   instance_type = "t2.micro"
 
   # give this instace ami from which should be deployed

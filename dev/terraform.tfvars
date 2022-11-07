@@ -1,0 +1,2 @@
+enivorment = "dev"
+project = "devopssol"
