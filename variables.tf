@@ -1,3 +1,18 @@
+variable "aws_access_key" {
+  type    = string
+  default = ""
+}
+
+variable "aws_secret_key" {
+  type    = string
+  default = ""
+}
+
+variable "region" {
+  type    = string
+  default = "us-east-1"
+}
+
 variable "host_os" {
   type    = string
   default = "linux"
@@ -13,9 +28,24 @@ variable "project" {
   default = ""
 }
 
+variable "bucket_name" {
+  type    = string
+  default = ""
+}
+
+variable "acl_value" {
+  type    = string
+  default = "private"
+}
+
 variable "rediscloud_creds" {
   type    = list(any)
   default = ["", ""]
+}
+
+variable "rediscloud_api_key" {
+  type    = string
+  default = "rediscloud_api_key"
 }
 
 variable "cc_last_4" {

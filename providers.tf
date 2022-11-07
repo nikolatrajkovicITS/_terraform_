@@ -12,14 +12,13 @@ terraform {
 }
 
 provider "aws" {
-  region     = "us-east-1"
-  access_key = "AKIAX2LT2VYAMLNP2EU6"
-  secret_key = "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"
+  region     = "${var.region}"
+  access_key = "${var.aws_access_key}"
+  secret_key = "${var.aws_secret_key}"
   profile    = "vscode_mac"
 }
 
 provider "rediscloud" {
-  api_key = "AKIAX2LT2VYAMLNP2EU6"
+  api_key = "${var.rediscloud_api_key}"
 }
-
 

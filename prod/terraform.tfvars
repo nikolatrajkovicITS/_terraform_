@@ -1,2 +1,2 @@
 enivorment = "prod"
-project = "devopssol"
+project = "devopstest"
