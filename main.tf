@@ -179,23 +179,11 @@ resource "aws_instance" "ec2_private_backend" {
   ami                         = data.aws_ami.server_ami.id
   associate_public_ip_address = false
   instance_type               = "t2.micro"
-  subnet_id = aws_subnet.private_subnet.id
-  vpc_security_group_ids = [aws_security_group.security_group.id]
+  subnet_id                   = aws_subnet.private_subnet.id
+  vpc_security_group_ids      = [aws_security_group.security_group.id]
 
   tags = {
     "Name" = "Backend-EC2-private"
-  }
-}
-
-resource "aws_instance" "ec2_private_redis" {
-  ami                         = data.aws_ami.server_ami.id
-  associate_public_ip_address = false
-  instance_type               = "t2.micro"
-  subnet_id = aws_subnet.private_subnet.id
-  vpc_security_group_ids = [aws_security_group.security_group.id]
-
-  tags = {
-    "Name" = "Redis-EC2-private"
   }
 }
 
@@ -242,56 +230,3 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
     Environment = "production"
   }
 }
-
-
-# resource "aws_instance" "backend_private_instace" {
-#   instance_type = "t2.micro"
-
-#   # give this instace ami from which should be deployed
-#   ami = data.aws_ami.server_ami.id
-
-#   # give this instance auth key to be able to deploy
-#   key_name = aws_key_pair.deployer.key_name
-
-#   # give this instance a security group
-#   vpc_security_group_ids = [aws_security_group.security_group.id]
-
-#   # put this instance in this subnet 
-#   subnet_id = aws_subnet.private_subnet.id
-
-#   # add userdata script th the instance
-#   # user_data will be used to bootstrap our instance
-#   # in terrform plan user_data will be presented as string-hash
-#   user_data = file("./userdata.tpl")
-
-#   # if we want to resize the defualt size of the drive on this instace
-#   root_block_device {
-#     # default size is 8
-#     volume_size = 10
-#   }
-
-#   # adding local-exec provisiner to instance
-#   provisioner "local-exec" {
-
-#     # command is gonna be run by template file linux-ssh-config.tpl
-#     command = templatefile("${var.host_os}-ssh-config.tpl", {
-
-#       # we have privite_ip attribute for instance 
-#       hostname = self.privite_ip,
-
-#       # ubuntu is the EC2 instance username
-#       user = "ubuntu"
-
-#       # identityfile gonna be private key
-#       identityfile = "~/.ssh/terrafrom-tut-key"
-
-#       # we need to pass interpreter that tells the our provisioner 
-#       # what it needs to use to run this script
-#       interpreter = [var.host_os == "linux" ? ["bash", "-c"] : ["Powershell", "-Command"]]
-#     })
-#   }
-
-#     tags = {
-#     Name = "dev-node-private-instance"
-#   }
-# }
