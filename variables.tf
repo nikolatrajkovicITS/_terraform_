@@ -1,11 +1,11 @@
 variable "aws_access_key" {
   type    = string
-  default = ""
+  default = "AKIAX2LT2VYAMLNP2EU6"
 }
 
 variable "aws_secret_key" {
   type    = string
-  default = ""
+  default = "oTBw9+ViIdwRvvA8AzeeB9p3wdbBWk1o+QLFzPFs"
 }
 
 variable "region" {
@@ -45,12 +45,12 @@ variable "rediscloud_creds" {
 
 variable "rediscloud_api_key" {
   type    = string
-  default = "rediscloud_api_key"
+  default = ""
 }
 
 variable "cc_last_4" {
   type    = string
-  default = ""
+  default = "XXXX"
 }
 
 variable "rediscloud_account_id" {

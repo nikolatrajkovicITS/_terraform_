@@ -45,7 +45,7 @@ resource "rediscloud_subscription" "redis-sub" {
     cloud_account_id = var.rediscloud_account_id
 
     region {
-      region                       = "${var.region}"
+      region                       = var.region
       networking_deployment_cidr   = "192.168.1.0/24"
       preferred_availability_zones = ["us-east-1a"]
     }
@@ -77,7 +77,7 @@ resource "rediscloud_subscription" "redis-sub" {
 
 resource "rediscloud_subscription_peering" "redis-sub-peering" {
   subscription_id = rediscloud_subscription.redis-sub.id
-  region          = "${var.region}"
+  region          = var.region
   aws_account_id  = var.aws_account_id
   vpc_id          = aws_vpc.main.id
   vpc_cidr        = aws_vpc.main.cidr_block

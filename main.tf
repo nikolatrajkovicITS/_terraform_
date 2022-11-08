@@ -43,7 +43,7 @@ resource "aws_subnet" "private_subnet" {
   availability_zone = "us-east-1b"
 
   tags = {
-    Name = "Private Subnet"
+    Name = "${var.enivorment}-Private Subnet"
   }
 }
 
@@ -97,8 +97,7 @@ resource "aws_security_group" "security_group" {
     to_port   = 0
     protocol  = "-1"
     # we gonna allow wharever goes into this subnet to access anything
-    # so we wont put our IP address here this time
-    # we allow it to access open internet
+    # allow it to access open internet
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
@@ -144,7 +143,6 @@ resource "aws_instance" "node" {
 
   # if we want to resize the defualt size of the drive on this instace
   root_block_device {
-    # default size is 8
     volume_size = 10
   }
 
@@ -170,7 +168,7 @@ resource "aws_instance" "node" {
   }
 
   tags = {
-    Name = "dev-node"
+    Name = "${var.enivorment}-node"
   }
 }
 
@@ -183,7 +181,7 @@ resource "aws_instance" "ec2_private_backend" {
   vpc_security_group_ids      = [aws_security_group.security_group.id]
 
   tags = {
-    "Name" = "Backend-EC2-private"
+    "Name" = "${var.enivorment}-Backend-EC2-private"
   }
 }
 
@@ -226,7 +224,7 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
   }
 
   tags = {
-    Name        = "dynamodb-table-1"
-    Environment = "production"
+    Name        = "${var.enivorment}-dynamodb-table-1"
+    Environment = "${var.enivorment}"
   }
 }
