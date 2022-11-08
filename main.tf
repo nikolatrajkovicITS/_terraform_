@@ -118,7 +118,8 @@ resource "aws_route_table_association" "private_subnet_rt_association" {
 # to be able to deploy our infrastrcuture
 resource "aws_key_pair" "deployer" {
   key_name   = "deployer-key"
-  public_key = file("~/.ssh/terrafrom-tut-key.pub")
+  #file("~/.ssh/terrafrom-tut-key.pub")
+  public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICyD/UXhoiw7OcwhSiYhGWr4S78iSfqn7HCHwFlGv08N nikolatrajkovic@SYM0216CSF.local"
 }
 
 resource "aws_instance" "node" {
